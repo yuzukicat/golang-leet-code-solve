@@ -7,10 +7,8 @@ import (
 func towSum(nums []int, target int) {
 	numMap := make(map[int]int)
 	for index, number := range nums {
-		numMap[number] = index
-	}
-	for number, index := range numMap {
 		anotherNumber := target - number
+		numMap[number] = index
 		anotherIndex, exist := numMap[anotherNumber]
 		if exist && anotherIndex != index {
 			fmt.Println(index, anotherIndex)
