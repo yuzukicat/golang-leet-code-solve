@@ -9,8 +9,8 @@ func towSum(nums []int, target int) {
 	solveSlice := []int{}
 	for index, number := range nums {
 		anotherNumber := target - number
-		numMap[number] = index
 		anotherIndex, exist := numMap[anotherNumber]
+		numMap[number] = index
 		if exist && anotherIndex != index {
 			solveSlice = append(solveSlice, anotherIndex)
 			solveSlice = append(solveSlice, index)
@@ -23,7 +23,7 @@ func towSum(nums []int, target int) {
 }
 
 func main() {
-	nums := []int{2, 7, 11, 15}
-	target := 9
+	nums := []int{3, 2, 4}
+	target := 6
 	towSum(nums, target)
 }
