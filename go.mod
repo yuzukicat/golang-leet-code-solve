@@ -1,3 +1,3 @@
-module yuzukicat/golang-leet-code-solve
+module github.com/yuzukicat/golang-leet-code-solve
 
-go 1.20
+go 1.19
