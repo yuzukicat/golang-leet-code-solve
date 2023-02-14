@@ -9,7 +9,7 @@ func iterate(input *string) {
 	*leftIndex = 0
 	var maxLength *int
 	maxLength = new(int)
-	*maxLength = 0
+	*maxLength = 1
 	for index, character := range *input {
 		_, exist := characterMap[character]
 		if exist {
