@@ -33,4 +33,6 @@ func main() {
 	iterate(&input3)
 	input4 := "aaaabcdefbcd"
 	iterate(&input4)
+	input5 := ""
+	iterate(&input5)
 }
