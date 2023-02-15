@@ -11,13 +11,15 @@ func LongestSubstringWithoutRepeatingCharacters(s string) int {
 	//add and update hashMap as a cache
 	hashMap := make(map[rune]int)
 	for right, rune := range s {
-		if _, exist := hashMap[rune]; exist {
-			*left = right
+		if index, exist := hashMap[rune]; exist {
+			if index+1 > *left {
+				*left = index + 1
+			}
 		}
-		hashMap[rune] = right
 		if length := right - *left + 1; *maxLength < length {
 			*maxLength = length
 		}
+		hashMap[rune] = right
 	}
 	return *maxLength
 }
