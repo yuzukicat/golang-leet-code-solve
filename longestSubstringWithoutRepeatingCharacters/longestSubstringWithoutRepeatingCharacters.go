@@ -1,25 +1,21 @@
 package longestSubstringWithoutRepeatingCharacters
 
 func LongestSubstringWithoutRepeatingCharacters(s string) int {
-	//if s = "", maxLength = 0
-	//if s = "a", ["a"]0
-	//if s = "dcbac",
-	//if s = "abba"
-	var left, maxLength *int
-	left = new(int)
-	maxLength = new(int)
+	// s=""
+	left := 0
+	maxLength := 0
 	//add and update hashMap as a cache
 	hashMap := make(map[rune]int)
 	for right, rune := range s {
-		if index, exist := hashMap[rune]; exist {
-			if index+1 > *left {
-				*left = index + 1
-			}
+		//Push the left to the latestPosition + 1
+		if latestPosition, exist := hashMap[rune]; exist && latestPosition > left {
+			left = latestPosition
 		}
-		if length := right - *left + 1; *maxLength < length {
-			*maxLength = length
+		if length := right - left + 1; maxLength < length {
+			maxLength = length
 		}
-		hashMap[rune] = right
+		//Optimize it here
+		hashMap[rune] = right + 1
 	}
-	return *maxLength
+	return maxLength
 }
