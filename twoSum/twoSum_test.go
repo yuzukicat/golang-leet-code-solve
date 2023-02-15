@@ -6,18 +6,18 @@ import (
 
 func TestTwoSum(t *testing.T) {
 	tests := [][]int{
+		[]int{2, 7, 11, 15},
 		[]int{3, 2, 4},
-		[]int{0, 8, 7, 3, 3, 4, 2},
-		[]int{0, 1},
+		[]int{3, 3},
 	}
 	targets := []int{
+		9,
 		6,
-		11,
-		1,
+		6,
 	}
 	results := [][]int{
+		[]int{0, 1},
 		[]int{1, 2},
-		[]int{1, 3},
 		[]int{0, 1},
 	}
 	caseNum := 3
