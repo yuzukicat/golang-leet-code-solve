@@ -1,38 +1,23 @@
-package main
+package longestSubstringWithoutRepeatingCharacters
 
-import "fmt"
-
-func iterate(input *string) {
-	characterMap := make(map[rune]int)
-	var leftIndex *int
-	leftIndex = new(int)
-	*leftIndex = 0
-	var maxLength *int
+func LongestSubstringWithoutRepeatingCharacters(s string) int {
+	//if s = "", maxLength = 0
+	//if s = "a", ["a"]0
+	//if s = "dcbac",
+	//if s = "abba"
+	var left, maxLength *int
+	left = new(int)
 	maxLength = new(int)
-	*maxLength = 1
-	for index, character := range *input {
-		_, exist := characterMap[character]
-		if exist {
-			*leftIndex = index
+	//add and update hashMap as a cache
+	hashMap := make(map[rune]int)
+	for right, rune := range s {
+		if _, exist := hashMap[rune]; exist {
+			*left = right
 		}
-		windowLength := index - *leftIndex + 1
-		if (windowLength) > *maxLength {
-			*maxLength = windowLength
+		hashMap[rune] = right
+		if length := right - *left + 1; *maxLength < length {
+			*maxLength = length
 		}
-		characterMap[character] = index
 	}
-	fmt.Println(*maxLength)
-}
-
-func main() {
-	input1 := "abcabcbb"
-	iterate(&input1)
-	input2 := "bbbbb"
-	iterate(&input2)
-	input3 := "pwwkew"
-	iterate(&input3)
-	input4 := "aaaabcdefbcd"
-	iterate(&input4)
-	input5 := ""
-	iterate(&input5)
+	return *maxLength
 }
