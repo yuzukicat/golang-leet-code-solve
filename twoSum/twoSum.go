@@ -1,29 +1,13 @@
-package main
+package twoSum
 
-import (
-	"fmt"
-)
-
-func towSum(nums []int, target int) {
-	numMap := make(map[int]int)
-	solveSlice := []int{}
+func TowSum(nums []int, target int) []int {
+	hashMap := make(map[int]int)
 	for index, number := range nums {
-		anotherNumber := target - number
-		anotherIndex, exist := numMap[anotherNumber]
-		numMap[number] = index
-		if exist && anotherIndex != index {
-			solveSlice = append(solveSlice, anotherIndex)
-			solveSlice = append(solveSlice, index)
-			break
-		} else if exist && anotherIndex == index {
-			solveSlice = append(solveSlice, index)
+		_, exist := hashMap[number]
+		if exist {
+			return []int{hashMap[number], index}
 		}
+		hashMap[target-number] = index
 	}
-	fmt.Println(solveSlice)
-}
-
-func main() {
-	nums := []int{3, 2, 4}
-	target := 6
-	towSum(nums, target)
+	return nil
 }
